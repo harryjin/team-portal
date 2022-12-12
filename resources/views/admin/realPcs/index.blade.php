@@ -29,6 +29,9 @@
                             {{ trans('cruds.realPc.fields.login') }}
                         </th>
                         <th>
+                            {{ trans('cruds.realPc.fields.password') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.realPc.fields.created_by') }}
                         </th>
                         <th>
@@ -47,6 +50,14 @@
                             </td>
                             <td>
                                 {{ $realPc->login ?? '' }}
+                            </td>
+                            <td>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control no-border" readonly value="{{ $realPc->password ?? '' }}">
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-info btn-flat pass-trigger">Show</button>
+                                    </span>
+                                </div>
                             </td>
                             <td>
                                 {{ $realPc->created_by->name ?? '' }}
@@ -130,7 +141,15 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+  $('.pass-trigger').click(function() {
+    if ($(this).parent().prev().attr("type")=="password"){
+        $(this).parent().prev().attr("type", "text");
+        $(this).html("Hide");
+    } else {
+        $(this).parent().prev().attr("type", "password");
+        $(this).html("Show");        
+    }
+  });
 })
 
 </script>

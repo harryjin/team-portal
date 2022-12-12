@@ -32,7 +32,13 @@
                             {{ trans('cruds.remotePc.fields.rid') }}
                         </th>
                         <th>
+                            {{ trans('cruds.remotePc.fields.rpassword') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.remotePc.fields.login') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.remotePc.fields.lpassword') }}
                         </th>
                         <th>
                             {{ trans('cruds.remotePc.fields.note') }}
@@ -61,7 +67,23 @@
                                 {{ $remotePc->rid ?? '' }}
                             </td>
                             <td>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control no-border" readonly value="{{ $remotePc->rpassword ?? '' }}">
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-info btn-flat pass-trigger">Show</button>
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
                                 {{ $remotePc->login ?? '' }}
+                            </td>
+                            <td>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control no-border" readonly value="{{ $remotePc->lpassword ?? '' }}">
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-info btn-flat pass-trigger">Show</button>
+                                    </span>
+                                </div>
                             </td>
                             <td>
                                 {{ $remotePc->note ?? '' }}
@@ -149,6 +171,15 @@
           .columns.adjust();
   });
   
+  $('.pass-trigger').click(function() {
+    if ($(this).parent().prev().attr("type")=="password"){
+        $(this).parent().prev().attr("type", "text");
+        $(this).html("Hide");
+    } else {
+        $(this).parent().prev().attr("type", "password");
+        $(this).html("Show");        
+    }
+  });
 })
 
 </script>

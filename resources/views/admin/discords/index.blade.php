@@ -29,6 +29,9 @@
                             {{ trans('cruds.discord.fields.email') }}
                         </th>
                         <th>
+                            {{ trans('cruds.discord.fields.password') }}
+                        </th>                        
+                        <th>
                             {{ trans('cruds.discord.fields.note') }}
                         </th>
                         <th>
@@ -50,6 +53,14 @@
                             </td>
                             <td>
                                 {{ $discord->email ?? '' }}
+                            </td>
+                            <td>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control no-border" readonly value="{{ $discord->password ?? '' }}">
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-info btn-flat pass-trigger">Show</button>
+                                    </span>
+                                </div>
                             </td>
                             <td>
                                 {{ $discord->note ?? '' }}
@@ -137,6 +148,15 @@
           .columns.adjust();
   });
   
+  $('.pass-trigger').click(function() {
+    if ($(this).parent().prev().attr("type")=="password"){
+        $(this).parent().prev().attr("type", "text");
+        $(this).html("Hide");
+    } else {
+        $(this).parent().prev().attr("type", "password");
+        $(this).html("Show");        
+    }
+  });
 })
 
 </script>

@@ -52,6 +52,14 @@
                                 {{ $email->email ?? '' }}
                             </td>
                             <td>
+                                <div class="input-group input-group-sm">
+                                    <input type="password" class="form-control no-border" readonly value="{{ $email->password ?? '' }}">
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-info btn-flat pass-trigger">Show</button>
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
                                 {{ $email->note ?? '' }}
                             </td>
                             <td>
@@ -137,6 +145,15 @@
           .columns.adjust();
   });
   
+  $('.pass-trigger').click(function() {
+    if ($(this).parent().prev().attr("type")=="password"){
+        $(this).parent().prev().attr("type", "text");
+        $(this).html("Hide");
+    } else {
+        $(this).parent().prev().attr("type", "password");
+        $(this).html("Show");        
+    }
+  });
 })
 
 </script>
