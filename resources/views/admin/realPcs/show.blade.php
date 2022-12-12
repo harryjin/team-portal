@@ -39,14 +39,6 @@
                             ********
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.realPc.fields.user') }}
-                        </th>
-                        <td>
-                            {{ $realPc->user->name ?? '' }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

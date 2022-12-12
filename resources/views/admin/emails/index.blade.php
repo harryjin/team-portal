@@ -32,6 +32,9 @@
                             {{ trans('cruds.email.fields.note') }}
                         </th>
                         <th>
+                            {{ trans('cruds.email.fields.created_by') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -50,6 +53,9 @@
                             </td>
                             <td>
                                 {{ $email->note ?? '' }}
+                            </td>
+                            <td>
+                                {{ $email->created_by->name ?? '' }}
                             </td>
                             <td>
                                 @can('email_show')

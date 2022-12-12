@@ -22,10 +22,6 @@ class UpdateRealPcRequest extends FormRequest
                 'max:30',
                 'required',
             ],
-            'user_id' => [
-                'required',
-                'integer',
-            ],
         ];
     }
 }

@@ -42,6 +42,7 @@ class RemotePc extends Model
         'lpassword',
         'type',
         'created_at',
+        'note',
         'updated_at',
         'deleted_at',
         'created_by_id',
