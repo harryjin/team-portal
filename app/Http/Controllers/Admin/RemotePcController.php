@@ -17,7 +17,7 @@ class RemotePcController extends Controller
     {
         abort_if(Gate::denies('remote_pc_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $remotePcs = RemotePc::all();
+        $remotePcs = RemotePc::with(['created_by'])->get();
 
         return view('admin.remotePcs.index', compact('remotePcs'));
     }
@@ -40,6 +40,8 @@ class RemotePcController extends Controller
     {
         abort_if(Gate::denies('remote_pc_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $remotePc->load('created_by');
+
         return view('admin.remotePcs.edit', compact('remotePc'));
     }
 
@@ -53,6 +55,8 @@ class RemotePcController extends Controller
     public function show(RemotePc $remotePc)
     {
         abort_if(Gate::denies('remote_pc_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $remotePc->load('created_by');
 
         return view('admin.remotePcs.show', compact('remotePc'));
     }

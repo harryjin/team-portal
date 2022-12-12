@@ -17,7 +17,7 @@ class EmailController extends Controller
     {
         abort_if(Gate::denies('email_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $emails = Email::all();
+        $emails = Email::with(['created_by'])->get();
 
         return view('admin.emails.index', compact('emails'));
     }
@@ -40,6 +40,8 @@ class EmailController extends Controller
     {
         abort_if(Gate::denies('email_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $email->load('created_by');
+
         return view('admin.emails.edit', compact('email'));
     }
 
@@ -53,6 +55,8 @@ class EmailController extends Controller
     public function show(Email $email)
     {
         abort_if(Gate::denies('email_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $email->load('created_by');
 
         return view('admin.emails.show', compact('email'));
     }

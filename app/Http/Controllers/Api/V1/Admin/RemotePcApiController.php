@@ -17,7 +17,7 @@ class RemotePcApiController extends Controller
     {
         abort_if(Gate::denies('remote_pc_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new RemotePcResource(RemotePc::all());
+        return new RemotePcResource(RemotePc::with(['created_by'])->get());
     }
 
     public function store(StoreRemotePcRequest $request)
@@ -33,7 +33,7 @@ class RemotePcApiController extends Controller
     {
         abort_if(Gate::denies('remote_pc_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new RemotePcResource($remotePc);
+        return new RemotePcResource($remotePc->load(['created_by']));
     }
 
     public function update(UpdateRemotePcRequest $request, RemotePc $remotePc)

@@ -17,7 +17,7 @@ class DiscordController extends Controller
     {
         abort_if(Gate::denies('discord_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $discords = Discord::all();
+        $discords = Discord::with(['created_by'])->get();
 
         return view('admin.discords.index', compact('discords'));
     }
@@ -40,6 +40,8 @@ class DiscordController extends Controller
     {
         abort_if(Gate::denies('discord_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $discord->load('created_by');
+
         return view('admin.discords.edit', compact('discord'));
     }
 
@@ -53,6 +55,8 @@ class DiscordController extends Controller
     public function show(Discord $discord)
     {
         abort_if(Gate::denies('discord_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $discord->load('created_by');
 
         return view('admin.discords.show', compact('discord'));
     }
