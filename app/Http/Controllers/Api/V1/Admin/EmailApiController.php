@@ -17,7 +17,7 @@ class EmailApiController extends Controller
     {
         abort_if(Gate::denies('email_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmailResource(Email::all());
+        return new EmailResource(Email::with(['created_by'])->get());
     }
 
     public function store(StoreEmailRequest $request)
@@ -33,7 +33,7 @@ class EmailApiController extends Controller
     {
         abort_if(Gate::denies('email_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmailResource($email);
+        return new EmailResource($email->load(['created_by']));
     }
 
     public function update(UpdateEmailRequest $request, Email $email)

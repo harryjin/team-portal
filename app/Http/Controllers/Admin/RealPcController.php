@@ -18,7 +18,7 @@ class RealPcController extends Controller
     {
         abort_if(Gate::denies('real_pc_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $realPcs = RealPc::with(['user'])->get();
+        $realPcs = RealPc::with(['user', 'created_by'])->get();
 
         return view('admin.realPcs.index', compact('realPcs'));
     }
@@ -45,7 +45,7 @@ class RealPcController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $realPc->load('user');
+        $realPc->load('user', 'created_by');
 
         return view('admin.realPcs.edit', compact('realPc', 'users'));
     }
@@ -61,7 +61,7 @@ class RealPcController extends Controller
     {
         abort_if(Gate::denies('real_pc_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $realPc->load('user');
+        $realPc->load('user', 'created_by');
 
         return view('admin.realPcs.show', compact('realPc'));
     }

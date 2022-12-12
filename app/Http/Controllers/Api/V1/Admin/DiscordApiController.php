@@ -17,7 +17,7 @@ class DiscordApiController extends Controller
     {
         abort_if(Gate::denies('discord_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DiscordResource(Discord::all());
+        return new DiscordResource(Discord::with(['created_by'])->get());
     }
 
     public function store(StoreDiscordRequest $request)
@@ -33,7 +33,7 @@ class DiscordApiController extends Controller
     {
         abort_if(Gate::denies('discord_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DiscordResource($discord);
+        return new DiscordResource($discord->load(['created_by']));
     }
 
     public function update(UpdateDiscordRequest $request, Discord $discord)

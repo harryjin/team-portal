@@ -17,7 +17,7 @@ class SkypeController extends Controller
     {
         abort_if(Gate::denies('skype_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $skypes = Skype::all();
+        $skypes = Skype::with(['created_by'])->get();
 
         return view('admin.skypes.index', compact('skypes'));
     }
@@ -40,6 +40,8 @@ class SkypeController extends Controller
     {
         abort_if(Gate::denies('skype_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $skype->load('created_by');
+
         return view('admin.skypes.edit', compact('skype'));
     }
 
@@ -53,6 +55,8 @@ class SkypeController extends Controller
     public function show(Skype $skype)
     {
         abort_if(Gate::denies('skype_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $skype->load('created_by');
 
         return view('admin.skypes.show', compact('skype'));
     }
