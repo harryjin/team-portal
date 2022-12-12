@@ -26,13 +26,19 @@
                             {{ trans('cruds.remotePc.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.remotePc.fields.type') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.remotePc.fields.rid') }}
                         </th>
                         <th>
                             {{ trans('cruds.remotePc.fields.login') }}
                         </th>
                         <th>
-                            {{ trans('cruds.remotePc.fields.type') }}
+                            {{ trans('cruds.remotePc.fields.note') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.remotePc.fields.created_by') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,13 +55,19 @@
                                 {{ $remotePc->id ?? '' }}
                             </td>
                             <td>
+                                {{ App\Models\RemotePc::TYPE_SELECT[$remotePc->type] ?? '' }}
+                            </td>
+                            <td>
                                 {{ $remotePc->rid ?? '' }}
                             </td>
                             <td>
                                 {{ $remotePc->login ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\RemotePc::TYPE_SELECT[$remotePc->type] ?? '' }}
+                                {{ $remotePc->note ?? '' }}
+                            </td>
+                            <td>
+                                {{ $remotePc->created_by->name ?? '' }}
                             </td>
                             <td>
                                 @can('remote_pc_show')

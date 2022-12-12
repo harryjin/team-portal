@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.remotePc.fields.type') }}
+                        </th>
+                        <td>
+                            {{ App\Models\RemotePc::TYPE_SELECT[$remotePc->type] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.remotePc.fields.rid') }}
                         </th>
                         <td>
@@ -57,10 +65,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.remotePc.fields.type') }}
+                            {{ trans('cruds.remotePc.fields.note') }}
                         </th>
                         <td>
-                            {{ App\Models\RemotePc::TYPE_SELECT[$remotePc->type] ?? '' }}
+                            {{ $remotePc->note }}
                         </td>
                     </tr>
                 </tbody>

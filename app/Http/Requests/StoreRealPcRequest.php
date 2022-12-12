@@ -25,10 +25,6 @@ class StoreRealPcRequest extends FormRequest
             'password' => [
                 'required',
             ],
-            'user_id' => [
-                'required',
-                'integer',
-            ],
         ];
     }
 }

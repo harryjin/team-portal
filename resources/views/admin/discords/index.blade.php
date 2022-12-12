@@ -32,6 +32,9 @@
                             {{ trans('cruds.discord.fields.note') }}
                         </th>
                         <th>
+                            {{ trans('cruds.discord.fields.created_by') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -50,6 +53,9 @@
                             </td>
                             <td>
                                 {{ $discord->note ?? '' }}
+                            </td>
+                            <td>
+                                {{ $discord->created_by->name ?? '' }}
                             </td>
                             <td>
                                 @can('discord_show')

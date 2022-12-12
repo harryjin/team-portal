@@ -35,7 +35,7 @@
                             @can('real_pc_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.real-pcs.index") }}" class="nav-link {{ request()->is("admin/real-pcs") || request()->is("admin/real-pcs/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
+                                        <i class="fa-fw nav-icon fas fa-laptop">
 
                                         </i>
                                         <p>
@@ -47,7 +47,7 @@
                             @can('remote_pc_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.remote-pcs.index") }}" class="nav-link {{ request()->is("admin/remote-pcs") || request()->is("admin/remote-pcs/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
+                                        <i class="fa-fw nav-icon fas fa-cloud">
 
                                         </i>
                                         <p>

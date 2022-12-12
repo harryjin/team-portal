@@ -29,7 +29,7 @@
                             {{ trans('cruds.realPc.fields.login') }}
                         </th>
                         <th>
-                            {{ trans('cruds.realPc.fields.user') }}
+                            {{ trans('cruds.realPc.fields.created_by') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,7 +49,7 @@
                                 {{ $realPc->login ?? '' }}
                             </td>
                             <td>
-                                {{ $realPc->user->name ?? '' }}
+                                {{ $realPc->created_by->name ?? '' }}
                             </td>
                             <td>
                                 @can('real_pc_show')

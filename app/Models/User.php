@@ -48,6 +48,31 @@ class User extends Authenticatable
         return $this->roles()->where('id', 1)->exists();
     }
 
+    public function createdByEmails()
+    {
+        return $this->hasMany(Email::class, 'created_by_id', 'id');
+    }
+
+    public function createdByRealPcs()
+    {
+        return $this->hasMany(RealPc::class, 'created_by_id', 'id');
+    }
+
+    public function createdByRemotePcs()
+    {
+        return $this->hasMany(RemotePc::class, 'created_by_id', 'id');
+    }
+
+    public function createdBySkypes()
+    {
+        return $this->hasMany(Skype::class, 'created_by_id', 'id');
+    }
+
+    public function createdByDiscords()
+    {
+        return $this->hasMany(Discord::class, 'created_by_id', 'id');
+    }
+
     public function getEmailVerifiedAtAttribute($value)
     {
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;

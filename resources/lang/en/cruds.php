@@ -79,8 +79,6 @@ return [
             'login_helper'      => ' ',
             'password'          => 'Password',
             'password_helper'   => ' ',
-            'user'              => 'User',
-            'user_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',
@@ -115,6 +113,8 @@ return [
             'deleted_at_helper' => ' ',
             'created_by'        => 'Created By',
             'created_by_helper' => ' ',
+            'note'              => 'Note',
+            'note_helper'       => ' ',
         ],
     ],
     'communication' => [

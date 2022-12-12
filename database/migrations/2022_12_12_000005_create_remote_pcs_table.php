@@ -10,11 +10,12 @@ class CreateRemotePcsTable extends Migration
     {
         Schema::create('remote_pcs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('type');
             $table->string('rid');
             $table->string('rpassword');
             $table->string('login')->nullable();
             $table->string('lpassword')->nullable();
-            $table->string('type');
+            $table->longText('note')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -38,6 +38,9 @@
                             {{ trans('cruds.skype.fields.note') }}
                         </th>
                         <th>
+                            {{ trans('cruds.skype.fields.created_by') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -62,6 +65,9 @@
                             </td>
                             <td>
                                 {{ $skype->note ?? '' }}
+                            </td>
+                            <td>
+                                {{ $skype->created_by->name ?? '' }}
                             </td>
                             <td>
                                 @can('skype_show')
